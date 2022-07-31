@@ -18,7 +18,7 @@ class PegawaiController extends Controller
             'title' => 'Data Pegawai',
             'menu' => 'data-pegawai'
         );
-        $data['jabatan'] = MasterJabatan::all();
+        $data['jabatan'] = MasterJabatan::where('status', 1)->get();
         $data['pegawai_list'] = Pegawai::with('jabatan')->get();
         // dd($data['pegawai_list'][1]->jabatan->nama_jabatan);
         return view('admin.data-pegawai.index', $data);
@@ -59,7 +59,7 @@ class PegawaiController extends Controller
                 'tempat_lahir' => $request->tempat_lahir,
                 'jenis_kelamin' => $request->jenis_kelamin,
                 'foto' => $custom_file_name,
-                'nip' => $nip,
+                'deskripsi' => $request->deskripsi,
                 'no_telp' => str_replace(" ", "", $request->no_telp),
                 // 'foto' => $foto_path,
             ]

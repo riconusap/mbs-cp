@@ -8,7 +8,7 @@ class Pegawai extends Authenticatable
 {
     protected $table = 'pegawai';
     public $fillable = [
-            'nama','jabatan_id','nip','foto','tempat_lahir','tanggal_lahir','no_telp','jenis_kelamin'
+            'nama','jabatan_id','nip','foto','tempat_lahir','tanggal_lahir','no_telp','jenis_kelamin','deskripsi'
         ];
     public function jabatan()
     {

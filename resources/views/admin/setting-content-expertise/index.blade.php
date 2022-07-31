@@ -163,7 +163,7 @@
                     if (result.value) {
                         $.ajax({
                             type: "DELETE",
-                            url: "{{ url('data-expertise/delete-expertise') }}" + '/' +
+                            url: "{{ url('/admin/data-expertise/delete-expertise') }}" + '/' +
                                 post_id,
                             success: function(data) {
                                 Swal.fire({

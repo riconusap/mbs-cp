@@ -46,7 +46,8 @@ class ArtikelController extends Controller
 
     public function post(Request $request)
     {
-        
+        // dd($request->all());
+
         $id = $request->post_id;
         $slug = str_replace(' ','-',(strtolower($request->judul)));
         if (empty($request->isi)) {

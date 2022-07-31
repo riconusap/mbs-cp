@@ -156,7 +156,7 @@
                     if (result.value) {
                         $.ajax({
                             type: "DELETE",
-                            url: "{{ url('data-client/delete-client') }}" + '/' +
+                            url: "{{ url('/admin/data-client/delete-client') }}" + '/' +
                                 post_id,
                             success: function(data) {
                                 Swal.fire({

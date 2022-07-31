@@ -143,7 +143,7 @@
                     if (result.value) {
                         $.ajax({
                             type: "DELETE",
-                            url: "{{ url('data-jabatan/delete-jabatan') }}" + '/' +
+                            url: "{{ url('/admin/data-jabatan/delete-jabatan') }}" + '/' +
                                 post_id,
                             success: function(data) {
                                 Swal.fire({

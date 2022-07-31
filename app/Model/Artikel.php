@@ -16,7 +16,7 @@ class Artikel extends Authenticatable
             'tanggal',
             'penulis',
             'summary',
-            'kategori_artikel',
+            'master_kategori_id',
         ];
     public function komentar()
     {

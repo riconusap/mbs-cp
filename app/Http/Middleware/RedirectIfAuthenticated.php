@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Model\TentangPerusahaan;
 use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Support\Facades\Auth;

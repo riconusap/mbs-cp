@@ -1,10 +1,10 @@
 <div class="main-sidebar">
     <aside id="sidebar-wrapper">
       <div class="sidebar-brand px-2">
-        <a href="{{route('dashboard')}}">Mauza Berkah Sejahtera</a>
+        <a href="{{route('dashboard')}}">{{strtoupper($tp->nama_perusahaan)}}</a>
       </div>
       <div class="sidebar-brand sidebar-brand-sm">
-        <a href="{{route('dashboard')}}">MBS</a>
+        <a href="{{route('dashboard')}}">{{strtoupper($tp->inisial_perusahaan)}}</a>
       </div>
         <ul class="sidebar-menu">
           <li class="{{$menu == 'dashboard' ? 'active' : ''}}"><a class="nav-link" href="{{ route('dashboard') }}"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>

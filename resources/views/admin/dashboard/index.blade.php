@@ -3,7 +3,7 @@
 @section('content')
 <section class="section">
     <div class="section-header">
-      <h1>Dashboard - Mauza Berkah Sejahtera</h1>
+      <h1>Dashboard - {{$tp->nama_perusahaan}}</h1>
     </div>
     <div class="section-body">
       <div class="row">

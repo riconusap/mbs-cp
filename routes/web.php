@@ -14,16 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Routers Users
+Route::get('/','DashboardUserController@index' )->name('dashboard-user');
+Route::get('/attorney/detail/{id}','DetailPegawaiController@detail' )->name('data-detail-attorney');
+Route::get('/attorney','DetailPegawaiController@index' )->name('data-attorney');
 
-Route::get('/', function () {
-    $data = array(
-        'title' => 'Dashboard',
-        'menu' => 'dashboard',
-    );
-    return view('admin.login', $data);
-})->name('login');
+Route::get('/artikel/detail/{slug}','ArtikelUserController@detail' )->name('data-detail-artikel-user');
+Route::get('/artikel','ArtikelUserController@index' )->name('data-artikel-user');
+Route::post('/artikel/detail/post/komentar','ArtikelUserController@postKomentar' )->name('data-artikel-user-post-komentar');
+Route::get('/artikel/search/{kategori}','ArtikelUserController@artikelGroupByKategori' )->name('data-artikel-user-by-kategori');
 
-Route::get('/login', function () {
+// end Routers user
+
+Route::get('/admin/login', function () {
     $data = array(
         'title' => 'Dashboard',
         'menu' => 'dashboard',
@@ -31,9 +34,10 @@ Route::get('/login', function () {
     return view('admin.login', $data);
 })->name('login-page');
 
+
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/dashboard', function () {
+    Route::get('/admin', function () {
         $data = array(
             'title' => 'Dashboard',
             'menu' => 'dashboard',
@@ -41,7 +45,7 @@ Route::middleware(['auth'])->group(function () {
         return view('admin.dashboard.index', $data);
     })->name('dashboard');
 
-    Route::get('/data-project', function () {
+    Route::get('/admin/data-project', function () {
         $data = array(
             'title' => 'Data Project',
             'menu' => 'data-project'
@@ -49,7 +53,7 @@ Route::middleware(['auth'])->group(function () {
         return view('admin.data-project.index', $data);
     })->name('data-project');
 
-    Route::get('/data-project/detail', function () {
+    Route::get('/admin/data-project/detail', function () {
         $data = array(
             'title' => 'Data Project',
             'menu' => 'data-project'
@@ -57,7 +61,7 @@ Route::middleware(['auth'])->group(function () {
         return view('admin.data-project.detail', $data);
     })->name('data-project-detail');
 
-    Route::get('/data-project/tambah', function () {
+    Route::get('/admin/data-project/tambah', function () {
         $data = array(
             'title' => 'Tambah Data Project',
             'menu' => 'data-project'
@@ -65,39 +69,37 @@ Route::middleware(['auth'])->group(function () {
         return view('admin.data-project.tambah', $data);
     })->name('data-project-detail-tambah');
 
-    Route::get('/data-pegawai','PegawaiController@index' )->name('data-pegawai');
-    Route::post('/data-pegawai/post-pegawai', 'PegawaiController@tambah')->name('post-edit-pegawai');
-    Route::delete('/data-pegawai/delete-pegawai/{id}', 'PegawaiController@delete')->name('delete-pegawai');
+    Route::get('/admin/data-pegawai','PegawaiController@index' )->name('data-pegawai');
+    Route::post('/admin/data-pegawai/post-pegawai', 'PegawaiController@tambah')->name('post-edit-pegawai');
+    Route::delete('/admin/data-pegawai/delete-pegawai/{id}', 'PegawaiController@delete')->name('delete-pegawai');
 
-    Route::get('/data-client', 'ClientController@index')->name('data-client');
-    Route::post('/data-client/post-client', 'ClientController@tambah')->name('post-edit-client');
-    Route::delete('/data-client/delete-client/{id}', 'ClientController@delete')->name('delete-client');
+    Route::get('/admin/data-client', 'ClientController@index')->name('data-client');
+    Route::post('/admin/data-client/post-client', 'ClientController@tambah')->name('post-edit-client');
+    Route::delete('/admin/data-client/delete-client/{id}', 'ClientController@delete')->name('delete-client');
 
-    Route::get('/data-tentang-perusahaan', 'TentangPerusahaanController@index')->name('data-tentang-perusahaan');
-    Route::post('/data-tentang-perusahaan/post-tentang-perusahaan', 'TentangPerusahaanController@tambah')->name('post-edit-tentang-perusahaan');
+    Route::get('/admin/data-tentang-perusahaan', 'TentangPerusahaanController@index')->name('data-tentang-perusahaan');
+    Route::post('/admin/data-tentang-perusahaan/post-tentang-perusahaan', 'TentangPerusahaanController@tambah')->name('post-edit-tentang-perusahaan');
 
-    Route::get('/data-jabatan', 'MasterJabatanController@index')->name('data-jabatan');
-    Route::post('/data-jabatan/post-jabatan', 'MasterJabatanController@tambah')->name('post-edit-jabatan');
-    Route::delete('/data-jabatan/delete-jabatan/{id}', 'MasterJabatanController@delete')->name('delete-jabatan');
+    Route::get('/admin/data-jabatan', 'MasterJabatanController@index')->name('data-jabatan');
+    Route::post('/admin/data-jabatan/post-jabatan', 'MasterJabatanController@tambah')->name('post-edit-jabatan');
+    Route::delete('/admin/data-jabatan/delete-jabatan/{id}', 'MasterJabatanController@delete')->name('delete-jabatan');
 
-    Route::get('/data-expertise', 'ExpertiseContentController@index')->name('data-expertise');
-    Route::post('/data-expertise/post-expertise', 'ExpertiseContentController@tambah')->name('post-edit-expertise');
-    Route::delete('/data-expertise/delete-expertise/{id}', 'ExpertiseContentController@delete')->name('delete-expertise');
+    Route::get('/admin/data-expertise', 'ExpertiseContentController@index')->name('data-expertise');
+    Route::post('/admin/data-expertise/post-expertise', 'ExpertiseContentController@tambah')->name('post-edit-expertise');
+    Route::delete('/admin/data-expertise/delete-expertise/{id}', 'ExpertiseContentController@delete')->name('delete-expertise');
 
-    Route::get('/data-kategori', 'MasterKategoriController@index')->name('data-kategori');
-    Route::post('/data-kategori/post-kategori', 'MasterKategoriController@tambah')->name('post-edit-kategori');
-    Route::delete('/data-kategori/delete-kategori/{id}', 'MasterKategoriController@delete')->name('delete-kategori');
+    Route::get('/admin/data-kategori', 'MasterKategoriController@index')->name('data-kategori');
+    Route::post('/admin/data-kategori/post-kategori', 'MasterKategoriController@tambah')->name('post-edit-kategori');
+    Route::delete('/admin/data-kategori/delete-kategori/{id}', 'MasterKategoriController@delete')->name('delete-kategori');
 
-    Route::get('/data-artikel', 'ArtikelController@index')->name('data-artikel');
-    Route::get('/data-artikel/detail/{id}', 'ArtikelController@tambah')->name('data-artikel-detail');
-    Route::get('/data-artikel/tambah', 'ArtikelController@tambah')->name('data-artikel-tambah');
-    Route::post('/data-artikel/post-artikel', 'ArtikelController@post')->name('post-edit-artikel');
-    Route::delete('/data-artikel/delete-artikel/{id}', 'ArtikelController@delete')->name('delete-artikel');
+    Route::get('/admin/data-artikel', 'ArtikelController@index')->name('data-artikel');
+    Route::get('/admin/data-artikel/detail/{id}', 'ArtikelController@tambah')->name('data-artikel-detail');
+    Route::get('/admin/data-artikel/tambah', 'ArtikelController@tambah')->name('data-artikel-tambah');
+    Route::post('/admin/data-artikel/post-artikel', 'ArtikelController@post')->name('post-edit-artikel');
+    Route::delete('/admin/data-artikel/delete-artikel/{id}', 'ArtikelController@delete')->name('delete-artikel');
 
-    Route::delete('data-artikel/detail/delete-komentar/{id}', 'ArtikelController@deleteKomentar')->name('data-artikel-delete-komentar');
-    Route::delete('data-artikel/detail/delete-komentar-child/{id}', 'ArtikelController@deleteKomentarChild')->name('data-artikel-delete-komentar-child');
-
-
+    Route::delete('/admin/data-artikel/detail/delete-komentar/{id}', 'ArtikelController@deleteKomentar')->name('data-artikel-delete-komentar');
+    Route::delete('/admin/data-artikel/detail/delete-komentar-child/{id}', 'ArtikelController@deleteKomentarChild')->name('data-artikel-delete-komentar-child');
 });
 
 Auth::routes();

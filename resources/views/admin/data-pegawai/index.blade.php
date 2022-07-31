@@ -21,12 +21,12 @@
                                             <th>
                                                 No
                                             </th>
-                                            <th>NIP</th>
-                                            <th>Nama Pegawai</th>
                                             <th>Foto</th>
+                                            <th>Nama Pegawai</th>
                                             <th>Tempat, Tanggal Lahir</th>
                                             <th>Jenis Kelamin</th>
                                             <th>Jabatan</th>
+                                            <th>Deskripsi</th>
                                             <th>Nomor Telepon </th>
                                             <th>Action</th>
                                         </tr>
@@ -35,13 +35,14 @@
                                         @foreach ($pegawai_list as $key => $data)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $data->nip }}</td>
-                                                <td>{{ $data->nama }}</td>
                                                 <td><img class="rounded-circle" src="{{ asset('storage/foto/'. $data->foto) }}" alt="avatar" height="40" width="40">
                                                 </td>
+                                                <td>{{ $data->nama }}</td>
+                                                
                                                 <td>{{ $data->tempat_lahir }}, {{ $data->tanggal_lahir }}</td>
                                                 <td>{{ $data->jenis_kelamin == 1 ? "Laki-Laki" : 'Perempuan' }}</td>
-                                                <td>{{ $data->jabatan['nama_jabatan'] }}</td>
+                                                <td>{{ $data->jabatan['jabatan'] }}</td>
+                                                <td>{{ $data->deskripsi }}</td>
                                                 <td>
                                                     {{ $data->no_telp }}
                                                 </td>
@@ -49,7 +50,7 @@
                                                     <button type="button"
                                                         class="btn btn-icon rounded-circle btn-outline-primary editButton"
                                                         data-id="{{$data->id}}"
-                                                        data-nip="{{$data->nip}}"
+                                                        data-deskripsi="{{$data->deskripsi}}"
                                                         data-nama="{{$data->nama}}"
                                                         data-tempat-lahir="{{$data->tempat_lahir}}"
                                                         data-tanggal-lahir="{{$data->tanggal_lahir}}"
@@ -134,7 +135,7 @@
                                 <select name="jabatan" id="jabatan" class="select2 form-control w-100" required>
                                     <option value="0" selected disabled>Pilih Jabatan</option>
                                     @foreach ($jabatan as $data)
-                                        <option value="{{ $data->id }}">{{ $data->nama_jabatan }}</option>
+                                        <option value="{{ $data->id }}">{{ $data->jabatan }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -149,6 +150,11 @@
                                 <input type="file" type="button" name="foto" id="file" class="form-control d-none"
                                     value="">
                             </div>
+                            <div class="col-md-12 mb-2">
+                                <label for="namapegawai" class="form-label">Deskripsi</label>
+                                <textarea name="deskripsi" class="form-control" id="deskripsi" cols="30" rows="10"></textarea>
+                            </div>
+                            
                         </div>
                 </div>
                 <div class="modal-footer">
@@ -196,7 +202,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                 $('#postForm').trigger('reset');
 
                 var id = $(this).data('id');
-                var nip = $(this).data('nip');
+                var deskripsi = $(this).data('deskripsi');
                 var nama = $(this).data('nama');
                 var tempat_lahir = $(this).data('tempat-lahir');
                 var tanggal_lahir = $(this).data('tanggal-lahir');
@@ -205,6 +211,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                 var jk = $(this).data('jk');
 
                 $('#post_id').val(id);
+                $('#deskripsi').val(deskripsi);
                 $('#nama_pegawai').val(nama);
                 $('#tempat_lahir').val(tempat_lahir);
                 $('#tanggal_lahir').val(tanggal_lahir);
@@ -239,7 +246,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                     if (result.value) {
                         $.ajax({
                             type: "DELETE",
-                            url: "{{ url('data-pegawai/delete-pegawai') }}" + '/' + post_id,
+                            url: "{{ url('/admin/data-pegawai/delete-pegawai') }}" + '/' + post_id,
                             success: function(data) {
                                 Swal.fire({
                                     icon: 'success',

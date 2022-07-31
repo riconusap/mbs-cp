@@ -30,7 +30,7 @@
                         </div>
                         <div class="col-3 mb-3">
                             <label for="" class="form-label">Kategori Artikel</label>
-                            <select name="" id="" class="select2 w-100">
+                            <select name="kategori" id="kategori" class="select2 w-100">
                                 <option selected disabled value="0">Pilih Kategori</option>
                                 @foreach ($kategori as $data)
                                     <option value="{{ $data->id }}">{{ $data->kategori }}</option>
@@ -62,24 +62,24 @@
                             <div class="row">
                                 <div class="col-6 mb-3">
                                     <label for="" class="form-label">Judul</label>
-                                    <input type="text" name="post_id" id="post_id" class="form-control d-none"
+                                    <input type="text" name="post_id" id="post_id" value="{{ $detail->id }}" class="form-control d-none"
                                         value="{{ $detail->id }}" required>
                                     <input type="text" name="judul" id="judul" class="form-control"
                                         value="{{ $detail->judul }}" required readonly>
                                 </div>
                                 <div class="col-6 mb-3">
                                     <label for="" class="form-label">Penulis</label>
-                                    <input type="text" name="judul" id="judul" class="form-control"
+                                    <input type="text" name="author" id="author" class="form-control"
                                         value="{{ $detail->author->name }}" readonly>
                                 </div>
                                 <div class="col-6 mb-3">
                                     <label for="" class="form-label">tanggal</label>
-                                    <input type="text" name="judul" id="judul" class="form-control"
+                                    <input type="text" name="tanggal" id="tanggal" class="form-control"
                                         value="{{ DateToText::dateToText($detail->tanggal) }}" readonly>
                                 </div>
                                 <div class="col-6 mb-3">
                                     <label for="" class="form-label">Kategori Artikel</label>
-                                    <select name="kategori" id="" class="select2 w-100" disabled>
+                                    <select name="kategori" id="kategori" class="select2 w-100" disabled>
                                         <option selected disabled value="0">Pilih Kategori</option>
                                         @foreach ($kategori as $data)
                                             <option {{ $data->id = $detail->kategori ? 'selected' : '' }}
@@ -90,22 +90,25 @@
 
                             </div>
                         </div>
-                        <div class="col-md-3 col-sm-12 mb-3 d-flex flex-column">
+                        <div id="imgDiv" class="col-md-3 col-sm-12 mb-3 d-flex flex-column">
                             <label for="" class="form-label">Thumbnail</label>
                             <img src="{{ asset('storage/foto/' . $detail->img) }}" class="rounded" alt="">
                         </div>
-                        <div class="col-3 mb-3 d-none">
-                            <label for="" class="form-label">Thumbnail</label>
-                            <input type="file" name="foto" id="foto" class="form-control" required>
+                        <div class="col-3 mb-3">
+                            <label for="" class="form-label">Ubah Thumbnail</label>
+                            <input type="file" name="foto" id="foto" class="form-control" disabled>
                         </div>
                         <div class="col-12 mb-3">
                             <label for="" class="form-label">Rangkuman</label>
                             <textarea id="deskripsi" cols="30" rows="10" maxlength="140" name="summary" class="form-control"
-                                required></textarea>
+                                required readonly>{{ $detail->summary }}</textarea>
                             <p class="text-muted">Maksimal 140 Karakter</p>
                         </div>
-                        <div class="col-12 mb-3">
-                            <textarea name="isi" id="editor" required></textarea>
+                        <div class="col-12 mb-3 d-none divEditor">
+                            <textarea name="isi" id="editor" required>{{ $detail->isi}}</textarea>
+                        </div>
+                        <div class="col-12 mb-3 divIsi">
+                            {!! $detail->isi !!}
                         </div>
                         <div class="col-12 mb-3">
                             <h3 class="font-weight-bold mb-4">{{ $detail->komentar->count() }} Komentar</h3>
@@ -140,13 +143,14 @@
                             @endforeach
                         </div>
                         <div class="col-12 ">
-                            <button type="submit" class="d-none btn btn-primary float-right"
+                            <button class="d-none btn btn-outline-primary float-right cancel-edit"
+                                id="btn-save">Cancel</button>
+                            <button type="submit" class="d-none btn btn-primary float-right save-edit"
                                 id="btn-save">Simpan</button>
                         </div>
                     </div>
                 </form>
             @endif
-
         </div>
     </section>
 @endsection
@@ -163,6 +167,27 @@
             $('.btn-back').click(function() {
                 window.location.href =
                     "{{ route('data-artikel') }}";
+            });
+            $('.editBtn').click(function(){
+                $('.save-edit').removeClass('d-none');
+                $('.cancel-edit').removeClass('d-none');
+                $(this).addClass('d-none');
+                $('.form-control').removeAttr('readonly');
+                $('.form-control').removeAttr('disabled');
+                $('.divEditor').removeClass('d-none');
+                $('.divIsi').addClass('d-none');
+                $('.select2').removeAttr('disabled');
+            });
+            $('.cancel-edit').click(function(e){
+                e.preventDefault();
+                $('.save-edit').addClass('d-none');
+                $('.editBtn').removeClass('d-none');
+                $(this).addClass('d-none');
+                $('.form-control').attr('readonly','true');
+                $('.form-control').attr('disabled','true');
+                $('.divEditor').addClass('d-none');
+                $('.divIsi').removeClass('d-none');
+                $('.select2').attr('disabled','true');
             });
             ClassicEditor
                 .create(document.querySelector('#editor'))

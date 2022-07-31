@@ -92,7 +92,7 @@
                     if (result.value) {
                         $.ajax({
                             type: "DELETE",
-                            url: "{{ url('data-artikel/delete-artikel') }}" + '/' + post_id,
+                            url: "{{ url('/admin/data-artikel/delete-artikel') }}" + '/' + post_id,
                             success: function(data) {
                                 Swal.fire({
                                     icon: 'success',
