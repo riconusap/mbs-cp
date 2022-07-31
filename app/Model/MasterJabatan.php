@@ -8,7 +8,7 @@ class MasterJabatan extends Authenticatable
 {
     protected $table = 'master_jabatan';
     public $fillable = [
-            'nama_jabatan'
+            'jabatan','status'
         ];
         public function pegawaijabatan()
         {

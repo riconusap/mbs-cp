@@ -1,4 +1,5 @@
   <!-- General JS Scripts -->
+  <script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -6,8 +7,6 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js"
     integrity="sha512-KaIyHb30iXTXfGyI9cyKFUIRSSuekJt6/vqXtyQKhQP6ozZEGY8nOtRS6fExqE4+RbYHus2yGyYg1BrqxzV6YA=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -31,11 +30,6 @@
   <script>
       $(document).ready(function() {
           'use strict';
-          var cleave = new Cleave('.input-phone', {
-              phone: true,
-              phoneRegionCode: 'ID',
-              placeholder: 'Masukan Nomor Telepon'
-          });
           var select = $('.select2');
 
           $(document).ready( function () {
@@ -53,7 +47,6 @@
                   dropdownParent: $this.parent()
               });
           });
-          $(".flatpickr").flatpickr();
       });
   </script>
 
