@@ -80,9 +80,9 @@
                                 <div class="col-6 mb-3">
                                     <label for="" class="form-label">Kategori Artikel</label>
                                     <select name="kategori" id="kategori" class="select2 w-100" disabled>
-                                        <option selected disabled value="0">Pilih Kategori</option>
+                                        <option disabled value="0">Pilih Kategori</option>
                                         @foreach ($kategori as $data)
-                                            <option {{ $data->id = $detail->kategori ? 'selected' : '' }}
+                                            <option {{ $data->id == $detail->master_kategori_id ? 'selected' : '' }}
                                                 value="{{ $data->id }}">{{ $data->kategori }}</option>
                                         @endforeach
                                     </select>

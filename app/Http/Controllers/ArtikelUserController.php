@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Model\Artikel;
 use App\Model\Client;
 use App\Model\ExpertiseContent;
+use Illuminate\Http\Request;
 use App\Model\MasterKategori;
 use App\Model\Pegawai;
 
@@ -32,6 +33,10 @@ class ArtikelUserController extends Controller
         $data['selected'] = Artikel::with('kategori','author','komentar','komentar.komentarChild')->where('slug', $slug)->first();
         // dd($data);
         return view('user.artikel.detail', $data);
+    }
+    public function postKomentar(Request $request)
+    {
+        dd($request->all());
     }
     public function artikelGroupByKategori($kategori)
     {

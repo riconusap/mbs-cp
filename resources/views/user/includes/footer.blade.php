@@ -56,6 +56,7 @@
     <script src="{{asset('user/lib/counterup/counterup.min.js')}}"></script>
     <script src="{{asset('user/lib/owlcarousel/owl.carousel.min.js')}}"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"></script>
     <script>
         AOS.init();
     </script>

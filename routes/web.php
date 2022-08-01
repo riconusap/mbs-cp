@@ -21,7 +21,7 @@ Route::get('/attorney','DetailPegawaiController@index' )->name('data-attorney');
 
 Route::get('/artikel/detail/{slug}','ArtikelUserController@detail' )->name('data-detail-artikel-user');
 Route::get('/artikel','ArtikelUserController@index' )->name('data-artikel-user');
-Route::post('/artikel/detail/post/komentar','ArtikelUserController@postKomentar' )->name('data-artikel-user-post-komentar');
+Route::post('/postKomen','ArtikelUserController@postKomentar' )->name('postKomen');
 Route::get('/artikel/search/{kategori}','ArtikelUserController@artikelGroupByKategori' )->name('data-artikel-user-by-kategori');
 
 // end Routers user
