@@ -193,7 +193,7 @@
                             </div> -->
                                 <div class="d-flex align-items-center">
                                     <i class="far fa-bookmark text-primary"></i>
-                                    <a class="text-muted ml-2" href="">{{$data->kategori->kategori}}</a>
+                                    <a class="text-muted ml-2" href=""></a>
                                 </div>
                             </div>
                             <a class="h5 font-weight-bold" href="">{{$data->judul}}</a>
