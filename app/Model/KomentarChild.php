@@ -9,7 +9,7 @@ class KomentarChild extends Authenticatable
 {
     protected $table = 'komentar_child';
     public $fillable = [
-            'komentar_id','id','email','tanggal'
+            'komentar_id','isi_komentar','email','tanggal'
         ];
     public function komentar_parent()
     {

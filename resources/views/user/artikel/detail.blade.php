@@ -7,7 +7,9 @@
         <div class="d-inline-flex text-white">
             <p class="m-0"><a class="text-white" href="{{ route('dashboard-user') }}">Home</a></p>
             <p class="m-0 px-2">/</p>
-            <p class="m-0">Artikel</p>
+            <p class="m-0"><a class="text-white" href="{{ route('data-artikel-user') }}">Artikel</a></p>
+            <p class="m-0 px-2">/</p>
+            <p class="m-0">{{ $selected->judul }}</p>
         </div>
     </div>
     <!-- Page Header Start -->
@@ -28,11 +30,13 @@
                 </div>
                 <div class="pt-4 pb-2">
                     <div class="d-flex mb-3">
-                        <div class="d-flex align-items-center">
-                            <i class="far fa-bookmark text-primary"></i>
-                            <a class="text-muted ml-2"
-                                href="{{ route('data-artikel-user-by-kategori', [$selected->kategori->kategori]) }}">{{ $selected->kategori->kategori }}</a>
-                            <p class="text-muted ml-2">{{ $selected->tanggal }}</p>
+                        <div class="d-flex flex-column align-items-start">
+                            <div class="d-flex-align-items-center">
+                                <i class="far fa-bookmark text-primary"></i>
+                                <a class="text-muted ml-2"
+                                    href="{{ route('data-artikel-user-by-kategori', [$selected->kategori->kategori]) }}">{{ $selected->kategori->kategori }}</a>
+                            </div>
+                            <p class="text-muted ml-2">{{ DateToText::DateToText($selected->tanggal) }}</p>
                         </div>
                     </div>
                     <h2 class="font-weight-bold">{{ $selected->judul }}</h2>
@@ -55,8 +59,28 @@
                                 </h6>
                                 <p>{{ $komentar->isi_komentar }}</p>
                                 <button data-id="{{ $komentar->id }}"
-                                    class="btn btn-sm btn-outline-danger font-weight-semi-bold hapusKomentar">Hapus
-                                    Komentar</button>
+                                                class="btn btn-sm btn-outline-primary font-weight-semi-bold Komen mb-4">Reply</button>
+                                            <div class="border p-5" id="komenBoxReply{{$komentar->id}}" style="display: none">
+                                                <h3 class="font-weight-bold mb-4">Leave a comment</h3>
+                                                <form id="postFormReply{{$komentar->id}}">
+                                                    <div class="form-group">
+                                                        <label for="email">Email *</label>
+                                                        <input type="email" class="form-control" name="emailRep"
+                                                             required>
+                                                        <input type="text" class="form-control" name="komentar_id"
+                                                            value="{{ $komentar->id }}" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="message">Message *</label>
+                                                        <textarea cols="30" rows="5" name="isi_rep" class="form-control"></textarea>
+                                                    </div>
+                                                    <div class="form-group mb-0">
+                                                        <button class="btn btn-primary float-right btn-reply"
+                                                        data-id="{{ $komentar->id }}"
+                                                            >Simpan</button>
+                                                    </div>
+                                                </form>
+                                            </div>
                                 @foreach ($komentar->komentarChild as $komentarChild)
                                     <div class="media mt-4">
                                         <img src="{{ asset('assets/img/avatar/avatar-1.png') }}" alt="Image"
@@ -65,9 +89,7 @@
                                             <h6>{{ $komentarChild->email }}<small><i>{{ DateToText::dateToText($komentarChild->tanggal) }}</i></small>
                                             </h6>
                                             <p>{{ $komentarChild->isi_komentar }}</p>
-                                            <button data-id="{{ $komentar->id }}"
-                                                class="btn btn-sm btn-outline-danger font-weight-semi-bold hapusKomentarChild">Hapus
-                                                Komentar</button>
+                                            
                                         </div>
                                     </div>
                                 @endforeach
@@ -85,14 +107,37 @@
                             <div class="form-group">
                                 <label for="email">Email *</label>
                                 <input type="email" class="form-control" name="email" id="email" required>
+                                <input type="text" class="form-control d-none" name="artikel_id"
+                                    value="{{ $selected->id }}" id="email" required>
                             </div>
                             <div class="form-group">
                                 <label for="message">Message *</label>
                                 <textarea id="message" cols="30" rows="5" name="isi" class="form-control"></textarea>
                             </div>
                             <div class="form-group mb-0">
-                                <button type="submit" class="btn btn-primary float-right save"
-                                    id="btn-save">Simpan</button>
+                                <button class="btn btn-primary float-right save" id="btn-save">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                @else
+                    <div class="btn-group">
+                        <button class="btn btn-primary mb-4" id="komentarParent">Komentar</button>
+                    </div>
+                    <div class="border p-5" id="komenBox" style="display: none">
+                        <h3 class="font-weight-bold mb-4">Leave a comment</h3>
+                        <form id="postForm">
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" class="form-control" name="email" id="email" required>
+                                <input type="text" class="form-control d-none" name="artikel_id"
+                                    value="{{ $selected->id }}" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message *</label>
+                                <textarea id="message" cols="30" rows="5" name="isi" class="form-control"></textarea>
+                            </div>
+                            <div class="form-group mb-0">
+                                <button class="btn btn-primary float-right save" id="btn-save">Simpan</button>
                             </div>
                         </form>
                     </div>
@@ -116,52 +161,95 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            if ($("#postForm").length > 0) {
-                $("#postForm").validate({
-                    submitHandler: function(form) {
-                        var fd = new FormData($('#postForm')[0]);
-                        $('#btn-save').html('Sending..');
-                        $.ajax({
-                            type: "POST",
-                            data: $('#postForm').serialize(),
-                            url: "{{ route('post-edit-artikel') }}",
-                            success: function(data) {
-                                $('#postForm').trigger("reset");
-                                $('#add').modal('hide');
-                                Swal.fire({
-                                    title: 'Berhasil!!!',
-                                    // text: 'Data Berhasil Ditambah!',
-                                    icon: 'success',
-                                    customClass: {
-                                        confirmButton: 'btn btn-primary'
-                                    },
-                                    buttonsStyling: false
-                                }).then(function(result) {
-                                    if (result.value) {
-                                        window.location.href =
-                                            "{{ route('data-artikel') }}";
-                                    }
-                                });
+            $('#komentarParent').on('click', function() {
+                $("#komenBox").toggle('slideDown');
+            });
+            $('.Komen').on('click', function() {
+                var post_id = $(this).attr('data-id'); 
+                $("#komenBoxReply" + post_id).toggle('slideDown');
+            });
+            $('#btn-save').on('click', function(e) {
+                e.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    data: $('#postForm').serialize(),
+                    url: "{{ route('postKomen') }}",
+                    success: function(data) {
+                        $('#postForm').trigger("reset");
+                        $('#add').modal('hide');
+                        Swal.fire({
+                            title: 'Berhasil!!!',
+                            // text: 'Data Berhasil Ditambah!',
+                            icon: 'success',
+                            customClass: {
+                                confirmButton: 'btn btn-primary'
                             },
-                            error: function(data) {
-                                Swal.fire({
-                                    title: 'Gagal Menambah Data!!!',
-                                    text: data.responseJSON.error,
-                                    icon: 'error',
-                                    customClass: {
-                                        confirmButton: 'btn btn-primary'
-                                    },
-                                    buttonsStyling: false
-                                }).then(function(result) {
-                                    if (result.value) {
-                                        // location.back();
-                                    }
-                                });
+                            buttonsStyling: false
+                        }).then(function(result) {
+                            if (result.value) {
+                                location.reload();
+                            }
+                        });
+                    },
+                    error: function(data) {
+                        Swal.fire({
+                            title: 'Gagal Menambah Data!!!',
+                            text: data.responseJSON.error,
+                            icon: 'error',
+                            customClass: {
+                                confirmButton: 'btn btn-primary'
+                            },
+                            buttonsStyling: false
+                        }).then(function(result) {
+                            if (result.value) {
+                                // location.back();
                             }
                         });
                     }
-                })
-            }
+                });
+            });
+            $('.btn-reply').on('click', function(e) {
+                var post_id = $(this).attr('data-id'); 
+                // alert($('#postFormReply').serialize());
+                e.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    data: $('#postFormReply' + post_id).serialize(),
+                    url: "{{ route('postKomenReply') }}",
+                    success: function(data) {
+                        $('#postFormReply').trigger("reset");
+                        $('#add').modal('hide');
+                        Swal.fire({
+                            title: 'Berhasil!!!',
+                            // text: 'Data Berhasil Ditambah!',
+                            icon: 'success',
+                            customClass: {
+                                confirmButton: 'btn btn-primary'
+                            },
+                            buttonsStyling: false
+                        }).then(function(result) {
+                            if (result.value) {
+                                location.reload();
+                            }
+                        });
+                    },
+                    error: function(data) {
+                        Swal.fire({
+                            title: 'Gagal Menambah Data!!!',
+                            text: data.responseJSON.error,
+                            icon: 'error',
+                            customClass: {
+                                confirmButton: 'btn btn-primary'
+                            },
+                            buttonsStyling: false
+                        }).then(function(result) {
+                            if (result.value) {
+                                // location.back();
+                            }
+                        });
+                    }
+                });
+            })
         })
     </script>
 @endsection

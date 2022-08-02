@@ -15,7 +15,7 @@
                 </div>
                 <div class="">
                     <button class="btn btn-primary editBtn"><i class="fas fa-edit mr-2"></i>Edit Artikel</button>
-                    <a href="" class="btn btn-info"><i class="fas fa-globe mr-2"></i>Lihat Artikel</a>
+                    <a href="{{ route('data-detail-artikel-user', [$detail->slug])  }}" class="btn btn-info"><i class="fas fa-globe mr-2"></i>Lihat Artikel</a>
                 </div>
             @endif
         </div>
@@ -197,7 +197,8 @@
                 .catch(error => {
                     console.error(error);
                 });
-            $('body').on('click', '.hapusKomentar', function() {
+            $('body').on('click', '.hapusKomentar', function(e) {
+                e.preventDefault();
                 // alert();
                 var post_id = $(this).attr('data-id');
                 // console.log(post_id);
@@ -216,7 +217,7 @@
                     if (result.value) {
                         $.ajax({
                             type: "DELETE",
-                            url: "{{ url('data-artikel/detail/delete-komentar') }}" + '/' +
+                            url: "{{ url('delete-komentar') }}" + '/' +
                                 post_id,
                             success: function(data) {
                                 Swal.fire({
@@ -261,7 +262,8 @@
                     }
                 });
             });
-            $('body').on('click', '.hapusKomentarChild', function() {
+            $('body').on('click', '.hapusKomentarChild', function(e) {
+                e.preventDefault();
                 // alert();
                 var post_id = $(this).attr('data-id');
                 // console.log(post_id);
@@ -280,7 +282,7 @@
                     if (result.value) {
                         $.ajax({
                             type: "DELETE",
-                            url: "{{ url('data-artikel/detail/delete-komentar-child') }}" + '/' +
+                            url: "{{ url('delete-komentar-child') }}" + '/' +
                                 post_id,
                             success: function(data) {
                                 Swal.fire({

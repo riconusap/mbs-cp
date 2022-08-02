@@ -49,9 +49,14 @@ class ArtikelController extends Controller
         // dd($request->all());
 
         $id = $request->post_id;
-        $slug = str_replace(' ','-',(strtolower($request->judul)));
+        $slug = preg_replace('/[^a-zA-Z0-9_ -]/s',' ',$request->judul);
+        $slug = str_replace(' ','-',(strtolower($slug)));
+
         if (empty($request->isi)) {
             return Response::json($respone = ['error' => "Isi Artikel Kosong!"], 422);
+        }
+        if ($request->kategori == 0) {
+            return Response::json($respone = ['error' => "Silahkan Pilih Kategori!"], 422);
         }
         if (empty($request->post_id)) {
             $p = Artikel::where('slug', $slug)->count();

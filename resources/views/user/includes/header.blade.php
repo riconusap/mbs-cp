@@ -1,4 +1,5 @@
 <meta charset="utf-8">
+<meta name="csrf-token" content="{{ csrf_token() }}" />
 <title>R. Prama Wijaya Law Firm</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="R. Prama Wijaya Law Firm" name="keywords">

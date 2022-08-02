@@ -22,6 +22,7 @@ Route::get('/attorney','DetailPegawaiController@index' )->name('data-attorney');
 Route::get('/artikel/detail/{slug}','ArtikelUserController@detail' )->name('data-detail-artikel-user');
 Route::get('/artikel','ArtikelUserController@index' )->name('data-artikel-user');
 Route::post('/postKomen','ArtikelUserController@postKomentar' )->name('postKomen');
+Route::post('/postKomen-reply','ArtikelUserController@postKomentarReply' )->name('postKomenReply');
 Route::get('/artikel/search/{kategori}','ArtikelUserController@artikelGroupByKategori' )->name('data-artikel-user-by-kategori');
 
 // end Routers user
@@ -98,8 +99,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin/data-artikel/post-artikel', 'ArtikelController@post')->name('post-edit-artikel');
     Route::delete('/admin/data-artikel/delete-artikel/{id}', 'ArtikelController@delete')->name('delete-artikel');
 
-    Route::delete('/admin/data-artikel/detail/delete-komentar/{id}', 'ArtikelController@deleteKomentar')->name('data-artikel-delete-komentar');
-    Route::delete('/admin/data-artikel/detail/delete-komentar-child/{id}', 'ArtikelController@deleteKomentarChild')->name('data-artikel-delete-komentar-child');
+    Route::delete('delete-komentar/{id}', 'ArtikelController@deleteKomentar')->name('data-artikel-delete-komentar');
+    Route::delete('delete-komentar-child/{id}', 'ArtikelController@deleteKomentarChild')->name('data-artikel-delete-komentar-child');
 });
 
 Auth::routes();

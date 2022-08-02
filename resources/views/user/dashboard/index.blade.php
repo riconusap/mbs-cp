@@ -42,47 +42,7 @@
                         </p>
                     </div>
                 </div>
-                <div data-aos="fade-right" class="row mt-4">
-                    <div class="col-md-4">
-                        <div class="card border-0">
-                            <div class="card-header bg-transparent border-0 ">
-                                <h5 class="font-weight-bold">Email</h5>
-                            </div>
-                            <div class="card-body d-flex align-items-center">
-                                <i class="fa fa-2x fa-envelope-open text-primary mr-3"></i>
-                                <div class="d-flex flex-column">
-                                    <p class="m-0">{{$tp->email_perusahaan}}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card border-0">
-                            <div class="card-header bg-transparent border-0 ">
-                                <h5 class="font-weight-bold">Phone</h5>
-                            </div>
-                            <div class="card-body d-flex align-items-center">
-                                <i class="fa fa-2x fa-phone-alt text-primary mr-3"></i>
-                                <div class="d-flex flex-column">
-                                    <p class="m-0">{{$tp->no_telp_perusahaan}}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card border-0">
-                            <div class="card-header bg-transparent border-0 ">
-                                <h5 class="font-weight-bold">Office</h5>
-                            </div>
-                            <div class="card-body d-flex align-items-center">
-                                <i class="fas fa-2x fa-building text-primary mr-3"></i>
-                                <div class="d-flex flex-column">
-                                    <p class="m-0">{{$tp->alamat_perusahaan}} </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </section>
@@ -178,7 +138,7 @@
                     @foreach ($artikel as $data)
                     <div class="col-md-4 mb-5">
                         <div class="position-relative">
-                            <img class="img-fluid w-100" src="{{asset('user/img/blog-1.jpg')}}" alt="">
+                            <img class="img-fluid w-100" src="{{asset('storage/foto/'.$data->img)}}" alt="">
                             <div class="position-absolute bg-primary d-flex flex-column align-items-center justify-content-center"
                                 style="width: 80px; height: 80px; bottom: 0; left: 0;">
                                 <h6 class="text-uppercase mt-2 mb-n2">{{date("M",strtotime($data->tanggal))}}</h6>
@@ -187,16 +147,12 @@
                         </div>
                         <div class="border border-top-0" style="padding: 30px;">
                             <div class="d-flex mb-3">
-                                <!-- <div class="d-flex align-items-center">
-                                <img class="rounded-circle" style="width: 40px; height: 40px;" src="img/user.jpg" alt="">
-                                <a class="text-muted ml-2" href="">John Doe</a>
-                            </div> -->
                                 <div class="d-flex align-items-center">
                                     <i class="far fa-bookmark text-primary"></i>
-                                    <a class="text-muted ml-2" href=""></a>
+                                    <a class="text-muted ml-2" href="{{ route('data-artikel-user-by-kategori', [$data->kategori->kategori]) }}">{{ $data->kategori->kategori }}</a>
                                 </div>
                             </div>
-                            <a class="h5 font-weight-bold" href="">{{$data->judul}}</a>
+                            <a class="h5 font-weight-bold" href="{{ route('data-detail-artikel-user', [$data->slug]) }}">{{$data->judul}}</a>
                         </div>
                     </div>
                     @endforeach
@@ -217,7 +173,7 @@
                             <div class="card-body d-flex align-items-center">
                                 <i class="fa fa-2x fa-envelope-open text-primary mr-3"></i>
                                 <div class="d-flex flex-column">
-                                    <p class="m-0">proxy@rpwadvocates.com</p>
+                                    <p class="m-0">{{$tp->email_perusahaan}}</p>
                                 </div>
                             </div>
                         </div>
@@ -230,7 +186,7 @@
                             <div class="card-body d-flex align-items-center">
                                 <i class="fa fa-2x fa-phone-alt text-primary mr-3"></i>
                                 <div class="d-flex flex-column">
-                                    <p class="m-0">(021) - 29557422</p>
+                                    <p class="m-0">{{$tp->no_telp_perusahaan}}</p>
                                 </div>
                             </div>
                         </div>
@@ -243,7 +199,7 @@
                             <div class="card-body d-flex align-items-center">
                                 <i class="fas fa-2x fa-building text-primary mr-3"></i>
                                 <div class="d-flex flex-column">
-                                    <p class="m-0">Jakarta, Indonesia </p>
+                                    <p class="m-0">{{$tp->alamat_perusahaan}} </p>
                                 </div>
                             </div>
                         </div>

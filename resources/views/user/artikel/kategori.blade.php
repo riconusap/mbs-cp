@@ -69,7 +69,7 @@
                     @foreach ($artikel as $data)
                     <div class="col-md-6 mb-5">
                         <div class="position-relative">
-                            <img class="img-fluid w-100" src="{{asset('user/img/blog-1.jpg')}}" alt="">
+                            <img class="img-fluid w-100" src="{{asset('storage/foto/'.$data->img)}}" alt="">
                             <div class="position-absolute bg-primary d-flex flex-column align-items-center justify-content-center"
                                 style="width: 80px; height: 80px; bottom: 0; left: 0;">
                                 <h6 class="text-uppercase mt-2 mb-n2">{{date("M",strtotime($data->tanggal))}}</h6>
