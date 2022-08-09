@@ -20,9 +20,9 @@
             <h5 class="font-weight-bold text-primary mb-4">Quick Links</h5>
             <div class="d-flex flex-column justify-content-start">
                 <a class="text-white mb-2" href="{{route('dashboard-user')}}"><i class="fa fa-angle-right text-primary mr-2"></i>Home</a>
-                <a href="{{route('data-attorney')}}" class="text-white mb-2 "><i class="fa fa-angle-right text-primary mr-2">Our Attorney</a>
-                <a href="{{route('data-artikel-user')}}" class="text-white mb-2"><i class="fa fa-angle-right text-primary mr-2">Articles</a>
-                <a href="contact.html" class="text-white mb-2"><i class="fa fa-angle-right text-primary mr-2">Contact Us</a>
+                <a href="{{route('data-attorney')}}" class="text-white mb-2 "><i class="fa fa-angle-right text-primary mr-2"></i>Our Attorney</a>
+                <a href="{{route('data-artikel-user')}}" class="text-white mb-2"><i class="fa fa-angle-right text-primary mr-2"></i>Articles</a>
+                <a href="contact.html" class="text-white mb-2"><i class="fa fa-angle-right text-primary mr-2"></i>Contact Us</a>
             </div>
         </div>
         <div class="col-lg-4 col-md-6 mb-5">
