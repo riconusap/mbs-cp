@@ -2,7 +2,7 @@
     <div class="container-lg p-0">
         <nav class="navbar navbar-expand-lg bg-secondary navbar-dark ">
             <a href="{{route('dashboard-user')}}" class="navbar-brand">
-                <img src="{{asset('storage/foto/'.$tp->logo_perusahaan)}}" width="100px" alt="">
+                <img src="{{asset('img/'.$tp->logo_perusahaan)}}" width="100px" alt="">
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>

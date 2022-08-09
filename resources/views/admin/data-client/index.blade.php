@@ -33,7 +33,7 @@
                                                 <td>{{ $data->nama_client }}</td>
                                                 <td>
                                                     <img class="rounded-circle" width="35" data-toggle="tooltip"
-                                                        title="{{$data->nama_client}} Logo" src="{{ asset('storage/foto/' . $data->logo) }}"
+                                                        title="{{$data->nama_client}} Logo" src="{{ asset('img/' . $data->logo) }}"
                                                         alt="{{$data->nama_client}} Logo">
                                                 </td>
                                                 <td>

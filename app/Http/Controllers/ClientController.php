@@ -26,7 +26,9 @@ class ClientController extends Controller
         
         if(isset($request->foto)){
             $custom_file_name =  date("Y_m_d_h_i_s") . '.' . $request->foto->extension();
-            $foto = $request->foto->storeAs('public/foto', $custom_file_name);
+            $image = $request->foto;
+            $dest = public_path('/img');
+            $image->move($dest, $custom_file_name);
         } else{
             $custom_file_name = $p->logo;
         }
