@@ -15,6 +15,6 @@ class Komentar extends Authenticatable
     }
     public function komentarChild()
     {
-        return $this->hasMany(komentarChild::class);
+        return $this->hasMany(KomentarChild::class);
     }
 }
