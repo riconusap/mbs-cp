@@ -35,7 +35,7 @@
                                         @foreach ($pegawai_list as $key => $data)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td><img class="rounded-circle" src="{{ asset('storage/foto/'. $data->foto) }}" alt="avatar" height="40" width="40">
+                                                <td><img class="rounded-circle" src="{{ asset('img/'. $data->foto) }}" alt="avatar" height="40" width="40">
                                                 </td>
                                                 <td>{{ $data->nama }}</td>
                                                 

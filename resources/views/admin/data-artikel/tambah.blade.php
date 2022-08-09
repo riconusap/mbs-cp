@@ -92,7 +92,7 @@
                         </div>
                         <div id="imgDiv" class="col-md-3 col-sm-12 mb-3 d-flex flex-column">
                             <label for="" class="form-label">Thumbnail</label>
-                            <img src="{{ asset('storage/foto/' . $detail->img) }}" class="rounded" alt="">
+                            <img src="{{ asset('img/' . $detail->img) }}" class="rounded" alt="">
                         </div>
                         <div class="col-3 mb-3">
                             <label for="" class="form-label">Ubah Thumbnail</label>

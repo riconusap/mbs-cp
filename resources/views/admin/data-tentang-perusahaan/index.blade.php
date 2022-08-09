@@ -97,7 +97,7 @@
                                     <label for="">Logo Perusahaan</label>
                                     <br>
                                     <img width="35px" class="mr-3"
-                                        src="{{ asset('storage/foto/' . $data->logo_perusahaan) }}" alt="">
+                                        src="{{ asset('img/' . $data->logo_perusahaan) }}" alt="">
                                 </div>
                                 <div class="col-md-12">
                                     <label for="">Tentang Perusahaan</label>
