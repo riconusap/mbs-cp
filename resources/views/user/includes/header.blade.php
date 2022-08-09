@@ -6,7 +6,7 @@
 <meta content="" name="description">
 
 <!-- Favicon -->
-<link href="{{asset('storage/foto/'.$tp->logo_perusahaan)}}" rel="icon">
+<link href="{{asset('img/'.$tp->logo_perusahaan)}}" rel="icon">
 
 <!-- Google Web Fonts -->
 <link rel="preconnect" href="https://fonts.gstatic.com">
