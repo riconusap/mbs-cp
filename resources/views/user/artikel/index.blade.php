@@ -52,7 +52,7 @@
                     <h3 class="font-weight-bold mb-4">Recent Post</h3>
                     @foreach ($latestArtikel as $data)
                     <div class="d-flex mb-3">
-                        <img class="img-fluid" src="{{asset('storage/foto/'.$data->img)}}" style="width: 80px; height: 80px;" alt="">
+                        <img class="img-fluid" src="{{asset('img/'.$data->img)}}" style="width: 80px; height: 80px;" alt="">
                         <div class="d-flex align-items-center border border-left-0 px-3" style="height: 80px;">
                             <a class="text-secondary font-weight-semi-bold" href="{{ route('data-detail-artikel-user', [$data->slug]) }}">{{ $data->judul }}</a>
                         </div>
@@ -68,7 +68,7 @@
                     @foreach ($artikel as $data)
                     <div class="col-md-6 mb-5">
                         <div class="position-relative">
-                            <img class="img-fluid w-100" src="{{asset('storage/foto/'.$data->img)}}" alt="">
+                            <img class="img-fluid w-100" src="{{asset('img/'.$data->img)}}" alt="">
                             <div class="position-absolute bg-primary d-flex flex-column align-items-center justify-content-center"
                                 style="width: 80px; height: 80px; bottom: 0; left: 0;">
                                 <h6 class="text-uppercase mt-2 mb-n2">{{date("M",strtotime($data->tanggal))}}</h6>

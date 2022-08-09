@@ -17,7 +17,7 @@
 <div class="container py-5">
     <div class="row d-flex align-items-center justify-content-center">
         <div class="col-lg-4">
-            <img src="{{ asset('storage/foto/'. $selected->foto) }}" class="w-100 rounded shadow" alt="">
+            <img src="{{ asset('img/'. $selected->foto) }}" class="w-100 rounded shadow" alt="">
         </div>
         <div class="col-lg-8 d-flex flex-column justify-content-around">
             <div class="people-name d-flex flex-column text-center justify-content-center align-items-center">
@@ -37,7 +37,7 @@
                         @foreach ($attorney as $data)
                         <div class="team-item">
                             <div class="position-relative">
-                                <img class="img-fluid w-100" src="{{ asset('storage/foto/'. $data->foto) }}" alt="">
+                                <img class="img-fluid w-100" src="{{ asset('img/'. $data->foto) }}" alt="">
                                 <div class="team-overlay position-absolute d-flex align-items-center justify-content-center m-3">
                                     <div class="d-flex align-items-center justify-content-start">
                                         <a class="btn btn-outline-secondary rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px;" href="{{ route('data-detail-attorney', [$data->id]) }}"><i class="fas fa-eye" data-toggle="tooltip" data-placement="top" title="Detail"></i></a>
