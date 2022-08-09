@@ -94,8 +94,8 @@
                         <h4 class="font-weight-normal text-muted mb-4">We provide comprehensive and integrated
                             answers, so it will eliminate doubts for individuals,
                             business people and even companies to be able to take strategic steps legally</h4>
-                        <a href="{{ route('data-attorney') }}" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold">Meet All
-                            Experts</a>
+                        {{-- <a href="{{ route('data-attorney') }}" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold">Meet All
+                            Experts</a> --}}
                     </div>
                     <div class="col-lg-8 mb-5">
                         <div class="owl-carousel team-carousel" data-aos="fade-right" data-aos-duration="2000">
@@ -128,7 +128,7 @@
     <!-- Team End -->
 
     <!-- Blog Start -->
-    <section id="project" data-aos="fade-up" data-aos-duration="1000">
+    {{-- <section id="project" data-aos="fade-up" data-aos-duration="1000">
         <div class="container-fluid pt-5">
             <div class="container">
                 <div class="text-center">
@@ -159,9 +159,9 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
-    <section data-aos="fade-right" data-aos-duration="1000" data-aos-easing="ease-in-sine">
+    {{-- <section data-aos="fade-right" data-aos-duration="1000" data-aos-easing="ease-in-sine">
         <div class="container-fluid py-5">
             <div class="container">
                 <div data-aos="fade-right" class="row mt-4">
@@ -207,5 +207,5 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 @endsection
