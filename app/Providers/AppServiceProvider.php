@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $tp = TentangPerusahaan::first();
-        // URL::forceScheme('https');
+        URL::forceScheme('https');
       // Sharing is caring
     //   dd($tp);
       View::share('tp', $tp);
