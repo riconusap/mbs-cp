@@ -101,6 +101,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::delete('delete-komentar/{id}', 'ArtikelController@deleteKomentar')->name('data-artikel-delete-komentar');
     Route::delete('delete-komentar-child/{id}', 'ArtikelController@deleteKomentarChild')->name('data-artikel-delete-komentar-child');
+
+    Route::get('/admin/users', 'UsersController@index')->name('users');
 });
 
 Auth::routes();
