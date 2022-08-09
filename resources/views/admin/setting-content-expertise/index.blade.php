@@ -35,7 +35,7 @@
                                                 <td>{{ $data->deskripsi }}</td>
                                                 <td>
                                                     <img class="rounded shadow" width="35" data-toggle="tooltip"
-                                                        title="{{$data->expertise}} Image" src="{{ asset('storage/foto/' . $data->img) }}"
+                                                        title="{{$data->expertise}} Image" src="{{ asset('img/' . $data->img) }}"
                                                         alt="{{$data->expertise}} Image">
                                                 </td>
                                                 <td>

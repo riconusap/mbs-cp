@@ -64,8 +64,8 @@
                     </div>
                     <div class="col-lg-12" data-aos="fade-right" data-aos-duration="2000">
                         <div class="row">
+                            @foreach ($expertise as $data)
                             <div class="col-md-6 mb-5">
-                                @foreach ($expertise as $data)
                                 <div class="d-flex">
                                     <img src="{{ asset('img/'. $data->img) }}" width="150px" class="rounded" alt="Corprate Law">
                                     <div class="d-flex flex-column ml-3">
@@ -73,8 +73,8 @@
                                         <p>{{$data->deskripsi}}</p>
                                     </div>
                                 </div>
-                                @endforeach
                             </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

@@ -15,8 +15,8 @@ class DetailPegawaiController extends Controller
             'menu' => 'data-attorney'
         );
         $data['founder'] = Pegawai::with('jabatan')->where('jabatan_id', 1)->first();
+        // dd($data['founder']);
         $data['attorney'] = Pegawai::with('jabatan')->where('jabatan_id','!=', 1)->get();
-        // dd($data);
         return view('user.attorney.index', $data);
     }
     
