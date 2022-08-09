@@ -67,7 +67,7 @@
                                                         <label for="email">Email *</label>
                                                         <input type="email" class="form-control" name="emailRep"
                                                              required>
-                                                        <input type="text" class="form-control" name="komentar_id"
+                                                        <input type="text" class="form-control d-none" name="komentar_id"
                                                             value="{{ $komentar->id }}" required>
                                                     </div>
                                                     <div class="form-group">
