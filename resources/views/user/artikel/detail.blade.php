@@ -21,7 +21,7 @@
             <!-- Blog Detail Start -->
             <div class="col-lg-12">
                 <div class="position-relative">
-                    <img class="img-fluid w-100" src="{{ asset('storage/foto/' . $selected->img) }}" alt="">
+                    <img class="img-fluid w-100" src="{{ asset('img/' . $selected->img) }}" alt="">
                     <div class="position-absolute bg-primary d-flex flex-column align-items-center justify-content-center"
                         style="width: 80px; height: 80px; bottom: 0; left: 0;">
                         <h6 class="text-uppercase mt-2 mb-n2">{{ date('M', strtotime($selected->tanggal)) }}</h6>

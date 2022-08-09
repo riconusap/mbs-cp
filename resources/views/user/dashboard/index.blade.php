@@ -67,7 +67,7 @@
                             <div class="col-md-6 mb-5">
                                 @foreach ($expertise as $data)
                                 <div class="d-flex">
-                                    <img src="{{ asset('storage/foto/'. $data->img) }}" width="150px" class="rounded" alt="Corprate Law">
+                                    <img src="{{ asset('img/'. $data->img) }}" width="150px" class="rounded" alt="Corprate Law">
                                     <div class="d-flex flex-column ml-3">
                                         <h5 class="font-weight-bold mb-3">{{$data->expertise}}</h5>
                                         <p>{{$data->deskripsi}}</p>
@@ -102,7 +102,7 @@
                             @foreach ($pegawai as $data)
                             <div class="team-item">
                                 <div class="position-relative">
-                                    <img class="img-fluid w-100" src="{{ asset('storage/foto/'. $data->foto) }}" alt="">
+                                    <img class="img-fluid w-100" src="{{ asset('img/'. $data->foto) }}" alt="">
                                     <div
                                         class="team-overlay position-absolute d-flex align-items-center justify-content-center m-3">
                                         <div class="d-flex align-items-center justify-content-start">
@@ -138,7 +138,7 @@
                     @foreach ($artikel as $data)
                     <div class="col-md-4 mb-5">
                         <div class="position-relative">
-                            <img class="img-fluid w-100" src="{{asset('storage/foto/'.$data->img)}}" alt="">
+                            <img class="img-fluid w-100" src="{{asset('img/'.$data->img)}}" alt="">
                             <div class="position-absolute bg-primary d-flex flex-column align-items-center justify-content-center"
                                 style="width: 80px; height: 80px; bottom: 0; left: 0;">
                                 <h6 class="text-uppercase mt-2 mb-n2">{{date("M",strtotime($data->tanggal))}}</h6>
