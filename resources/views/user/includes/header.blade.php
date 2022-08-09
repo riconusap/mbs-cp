@@ -1,9 +1,32 @@
 <meta charset="utf-8">
 <meta name="csrf-token" content="{{ csrf_token() }}" />
-<title>R. Prama Wijaya Law Firm</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<meta content="R. Prama Wijaya Law Firm" name="keywords">
-<meta content="" name="description">
+
+
+  <!-- HTML Meta Tags -->
+  <title>R. Prama Wijaya Law Firm</title>
+  <meta name="description" content="{{$tp->tentang_perusahaan}}">
+
+  <!-- Facebook Meta Tags -->
+  <meta property="og:url" content="https://rpw-temp.herokuapp.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="R. Prama Wijaya Law Firm">
+  <meta property="og:description" content="{{$tp->tentang_perusahaan}}">
+  <meta property="og:image" content="{{asset('img/'.$tp->logo_perusahaan)}}">
+  <meta property="og:image:width" content="600">
+  <meta property="og:image:height" content="314">
+  
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="twitter:domain" content="rpw-temp.herokuapp.com">
+  <meta property="twitter:url" content="https://rpw-temp.herokuapp.com/">
+  <meta name="twitter:title" content="R. Prama Wijaya Law Firm">
+  <meta name="twitter:description" content="{{asset('img/'.$tp->tentang_perusahaan)}}">
+  <meta name="twitter:image" content="{{asset('img/'.$tp->logo_perusahaan)}}">
+
+  <!-- Meta Tags Generated via https://www.opengraph.xyz -->
+        
 
 <!-- Favicon -->
 <link href="{{asset('img/'.$tp->logo_perusahaan)}}" rel="icon">
