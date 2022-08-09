@@ -2,7 +2,7 @@
     <div class="row pt-5">
         <div class="col-lg-4 col-md-12 mb-5">
             <a href="index.html" class="navbar-brand">
-                <img src="img/logo.png" width="100px" alt="">
+                <img src="{{asset('img/'.$tp->logo_perusahaan)}}" width="100px" alt="">
             </a>
             <p>Volup amet magna clita tempor. Tempor sea eos vero ipsum. Lorem lorem sit sed elitr sed kasd et</p>
             <div class="d-flex justify-content-start mt-4">
@@ -19,22 +19,18 @@
         <div class="col-lg-4 col-md-6 mb-5">
             <h5 class="font-weight-bold text-primary mb-4">Quick Links</h5>
             <div class="d-flex flex-column justify-content-start">
-                <a class="text-white mb-2" href="#home"><i class="fa fa-angle-right text-primary mr-2"></i>Home</a>
-                <a class="text-white mb-2" href="#about"><i class="fa fa-angle-right text-primary mr-2"></i>About
-                    Us</a>
-                <a class="text-white mb-2" href="#services"><i
-                        class="fa fa-angle-right text-primary mr-2"></i>Services</a>
-                <a class="text-white mb-2" href="#projects"><i
-                        class="fa fa-angle-right text-primary mr-2"></i>Project</a>
-                <a class="text-white" href="#"><i class="fa fa-angle-right text-primary mr-2"></i>Contact Us</a>
+                <a class="text-white mb-2" href="{{route('dashboard-user')}}"><i class="fa fa-angle-right text-primary mr-2"></i>Home</a>
+                <a href="{{route('data-attorney')}}" class="nav-item nav-link {{ $menu === "data-attorney" ? 'active' : '' }} ">Our Attorney</a>
+                <a href="{{route('data-artikel-user')}}" class="nav-item nav-link {{ $menu === "data-artikel" ? 'active' : '' }}">Articles</a>
+                <a href="contact.html" class="nav-item nav-link {{ $menu === "data-contact-us" ? 'active' : '' }}">Contact Us</a>
             </div>
         </div>
         <div class="col-lg-4 col-md-6 mb-5">
             <h5 class="font-weight-bold text-primary mb-4">Get In Touch</h5>
             <p>Dolor clita stet nonumy clita diam vero, et et ipsum diam labore</p>
-            <p><i class="fa fa-map-marker-alt text-primary mr-2"></i>123 Street, New York, USA</p>
-            <p><i class="fa fa-phone-alt text-primary mr-2"></i>+012 345 67890</p>
-            <p><i class="fa fa-envelope text-primary mr-2"></i>info@example.com</p>
+            <p><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{$tp->alamat_perusahaan}}</p>
+            <p><i class="fa fa-phone-alt text-primary mr-2"></i>{{$tp->no_telp_perusahaan}}</p>
+            <p><i class="fa fa-envelope text-primary mr-2"></i>{{$tp->email_perusahaan}}</p>
         </div>
     </div>
 </div>
