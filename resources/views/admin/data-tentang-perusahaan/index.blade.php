@@ -6,7 +6,7 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <img width="35px" class="mr-3" src="{{ asset('storage/foto/' . $data_tp[0]->logo_perusahaan) }}" alt="">
+            <img width="35px" class="mr-3" src="{{ asset('img/' . $tp->logo_perusahaan) }}" alt="">
             <h1>Kelola Data Perusahaan</h1>
         </div>
         <div class="section-body">
@@ -57,7 +57,10 @@
                                 </div>
                                 <div class="col-md-12">
                                     <label for="">Tentang Perusahaan</label>
-                                    <textarea type="text" name="tentang_perusahaan" class="form-control" rows="9">{{ $data->tentang_perushaan }}</textarea>
+                                    @php
+                                        $tentang_perusahaan = $data->tentang_perushaan;
+                                    @endphp
+                                    <textarea type="text" name="tentang_perusahaan" class="form-control" rows="9">{{ $data->tentang_perusahaan }}</textarea>
                                 </div>
                             @endforeach
                             <button type="submit" class="btn btn-success d-none" id="submitButton"><i

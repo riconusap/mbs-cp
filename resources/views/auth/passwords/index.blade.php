@@ -23,29 +23,26 @@
                                             </th>
                                             <th>Nama</th>
                                             <th>Email</th>
-                                            {{-- <th>Action</th> --}}
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($users as $data)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $data->name }}</td>
+                                                <td>{{ $data->name}}</td>
                                                 <td>{{ $data->email }}</td>
-                                                {{-- <td>
-                                                    <a type="button"
-                                                    href="{{ route('data-artikel-detail',[$data->id]) }}"
-                                                        class="btn btn-icon rounded-circle btn-outline-primary editButton"
-                                                        data-toggle="tooltip" data-placement="top" title="Edit">
-                                                        <i class="fas fa-eye" style="width: 100%"></i>
-                                                    </a>
+                                                <td>
+                                                    @if (Auth::user()['email'] === $data->email)
+                                                        
                                                     <button type="button"
                                                     data-id="{{ $data->id }}"
-                                                        class="btn btn-icon rounded-circle btn-outline-danger delete"
-                                                        data-toggle="tooltip" data-placement="top" title="Hapus">
-                                                        <i class="fas fa-trash" style="width: 100%"></i>
+                                                        class="btn btn-icon rounded-circle btn-outline-info delete editButton"
+                                                        data-toggle="tooltip" data-placement="top" title="Ubah Password">
+                                                        <i class="fas fa-edit" style="width: 100%"></i>
                                                     </button>
-                                                </td> --}}
+                                                    @endif
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -57,6 +54,45 @@
             </div>
         </div>
     </section>
+    <div class="modal fade" id="add" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ubah Password</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="#" id="postForm">
+                        <div class="row">
+                            {{-- <div class="col-md-6">
+                                <label for="namapegawai" class="form-label">Nip Pegawai</label>
+                                <input type="text" class="form-control" value="" id="nip_pegawai" >
+                            </div> --}}
+                            <div class="editForm">
+                                <input type="hidden" name="post_id" id="post_id">
+                            </div>
+                            <div class="col-md-12 mb-2">
+                                <label for="passwordOld" class="form-label">Masukan Password Lama</label>
+                                <input type="password" class="form-control" placeholder="Masukan password" name="passwordOld"
+                                    id="password" required>
+                            </div>
+                            <div class="col-md-12 mb-2">
+                                <label for="password" class="form-label">Masukan Password Baruf</label>
+                                <input type="password" class="form-control" placeholder="Masukan password" name="password"
+                                    id="password" required>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="btn-save">Simpan</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('custom-js')
     <script>
@@ -67,69 +103,63 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            $('body').on('click', '.delete', function() {
-                // alert();
-                var post_id = $(this).attr('data-id');
-                // console.log(post_id);
-                Swal.fire({
-                    title: 'Apakah anda yakin?',
-                    text: "Anda tidak akan dapat membatalkan perintah ini!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: 'Ya, Hapus!',
-                    customClass: {
-                        confirmButton: 'btn btn-primary',
-                        cancelButton: 'btn btn-outline-danger ml-1'
-                    },
-                    buttonsStyling: false
-                }).then(function(result) {
-                    if (result.value) {
-                        $.ajax({
-                            type: "DELETE",
-                            url: "{{ url('/admin/data-artikel/delete-artikel') }}" + '/' + post_id,
-                            success: function(data) {
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Terhapus!',
-                                    text: 'Data sudah berhasil terhapus.',
-                                    customClass: {
-                                        confirmButton: 'btn btn-success'
-                                    },
-                                    buttonsStyling: false
-                                }).then(function(result) {
-                                    if (result.value) {
-                                        location.reload();
-                                    }
-                                });
-                            },
-                            error: function(data) {
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Terhapus!',
-                                    text: 'Data sudah berhasil terhapus.',
-                                    customClass: {
-                                        confirmButton: 'btn btn-success'
-                                    },
-                                    buttonsStyling: false
-                                }).then(function(result) {
-                                    if (result.value) {
-                                        location.reload();
-                                    }
-                                });
-                            }
-                        });
-                    } else if (result.dismiss === Swal.DismissReason.cancel) {
-                        Swal.fire({
-                            title: 'Dibatalkan',
-                            text: 'Data dibatalkan untuk dihapus',
-                            icon: 'error',
-                            customClass: {
-                                confirmButton: 'btn btn-success'
-                            }
-                        });
-                    }
-                });
+            $('.editButton').click(function() {
+                $('#postForm').trigger('reset');
+
+                var id = $(this).data('id');
+
+                $('#post_id').val(id);
+
+                $('#add').modal('show');
             });
+
+            if ($("#postForm").length > 0) {
+            $("#postForm").validate({
+                submitHandler: function(form) {
+                    var fd = new FormData($('#postForm')[0]);
+                    $('#btn-save').html('Sending..');
+                    $.ajax({
+                        type: "POST",
+                        data: fd,
+                        url: "{{ route('reset') }}",
+                        processData: false,
+                        contentType: false,
+                        success: function(data) {
+                            $('#postForm').trigger("reset");
+                            $('#add').modal('hide');
+                            Swal.fire({
+                                title: 'Berhasil!!!',
+                                // text: 'Data Berhasil Ditambah!',
+                                icon: 'success',
+                                customClass: {
+                                    confirmButton: 'btn btn-primary'
+                                },
+                                buttonsStyling: false
+                            }).then(function(result) {
+                                if (result.value) {
+                                    location.reload();
+                                }
+                            });
+                        },
+                        error: function(data) {
+                            Swal.fire({
+                                title: 'Gagal!!!',
+                                text: data.responseJSON.error,
+                                icon: 'error',
+                                customClass: {
+                                    confirmButton: 'btn btn-primary'
+                                },
+                                buttonsStyling: false
+                            }).then(function(result) {
+                                if (result.value) {
+                                    // location.back();
+                                }
+                            });
+                        }
+                    });
+                }
+            })
+        }
         });
 
     </script>

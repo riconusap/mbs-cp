@@ -1,5 +1,13 @@
 @extends('admin.layouts.main')
 
+@section('custom-css')
+<style>
+    .ck-content {
+        height: 30rem;
+    }
+</style>
+@endsection
+
 @section('content')
     <section class="section">
         <div class="section-header d-flex justify-content-between align-items-center">

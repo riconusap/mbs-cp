@@ -22,7 +22,7 @@
                             <a class="dropdown-item" href="#">Articles</a>
                         </div>
                     </li> -->
-                    <a href="contact.html" class="nav-item nav-link {{ $menu === "data-contact-us" ? 'active' : '' }}">Contact Us</a>
+                    <a href="{{route('data-contact-us')}}" class="nav-item nav-link {{ $menu === "data-contact-us" ? 'active' : '' }}">Contact Us</a>
                 </div>
             </div>
         </nav>

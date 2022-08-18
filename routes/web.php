@@ -19,6 +19,14 @@ Route::get('/','DashboardUserController@index' )->name('dashboard-user');
 Route::get('/attorney/detail/{id}','DetailPegawaiController@detail' )->name('data-detail-attorney');
 Route::get('/attorney','DetailPegawaiController@index' )->name('data-attorney');
 
+Route::get('/contactUs', function () {
+    $data = array(
+        'title' => 'Contact Us',
+        'menu' => 'data-contact-us'
+    );
+    return view('user.contactUs.index', $data);
+})->name('data-contact-us');
+
 Route::get('/artikel/detail/{slug}','ArtikelUserController@detail' )->name('data-detail-artikel-user');
 Route::get('/artikel','ArtikelUserController@index' )->name('data-artikel-user');
 Route::post('/postKomen','ArtikelUserController@postKomentar' )->name('postKomen');
@@ -103,6 +111,7 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('delete-komentar-child/{id}', 'ArtikelController@deleteKomentarChild')->name('data-artikel-delete-komentar-child');
 
     Route::get('/admin/users', 'UsersController@index')->name('users');
+    Route::post('/admin/users/resetPassword', 'auth\ResetPasswordController@resetPassword')->name('reset');
 });
 
 Auth::routes();

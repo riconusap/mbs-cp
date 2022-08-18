@@ -19,7 +19,7 @@
           <li class="menu-header">Data Master</li>
           <li class="{{$menu == 'data-jabatan' ? 'active' : ''}}"><a class="nav-link" href="{{ route('data-jabatan') }}"><i class="fas fa-briefcase"></i><span>Master Jabatan</span></a></li>
           <li class="{{$menu == 'data-kategori' ? 'active' : ''}}"><a class="nav-link" href="{{ route('data-kategori') }}"><i class="fas fa-newspaper"></i><span>Master Kategori Artikel</span></a></li>
-          <li class="{{$menu == 'register' ? 'active' : ''}}"><a class="nav-link" href="{{ route('users') }}"><i class="fas fa-newspaper"></i><span>Master User</span></a></li>
+          <li class="{{$menu == 'register' ? 'active' : ''}}"><a class="nav-link" href="{{ route('users') }}"><i class="fas fa-user"></i><span>Master User</span></a></li>
         </ul>
     </aside>
   </div>
