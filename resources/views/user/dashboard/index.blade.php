@@ -85,7 +85,7 @@
     <!-- Services End -->
 
     <!-- Team Start -->
-    <section data-aos="fade-right" data-aos-duration="1000" id="teams">
+    {{-- <section data-aos="fade-right" data-aos-duration="1000" id="teams">
         <div class="container-fluid pt-5">
             <div class="container">
                 <div class="row">
@@ -94,8 +94,8 @@
                         <h4 class="font-weight-normal text-muted mb-4">We provide comprehensive and integrated
                             answers, so it will eliminate doubts for individuals,
                             business people and even companies to be able to take strategic steps legally</h4>
-                        {{-- <a href="{{ route('data-attorney') }}" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold">Meet All
-                            Experts</a> --}}
+                        <a href="{{ route('data-attorney') }}" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold">Meet All
+                            Experts</a>
                     </div>
                     <div class="col-lg-8 mb-5">
                         <div class="owl-carousel team-carousel" data-aos="fade-right" data-aos-duration="2000">
@@ -124,7 +124,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- Team End -->
 
     <!-- Blog Start -->
