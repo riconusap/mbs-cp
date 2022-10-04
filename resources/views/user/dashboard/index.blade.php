@@ -14,8 +14,8 @@
                         <img class="img-fluid w-100" style="height: 100vh;" src="{{asset('user/img/bg1.jpg')}}" alt="Image">
                         <div class="carousel-caption d-flex align-items-center justify-content-center">
                             <div class="p-5" style="width: 100%; max-width: 900px;">
-                                <h5 class="text-white text-uppercase mb-md-3">R .PRAMA WIJAWA & PARTNERS</h5>
-                                <h1 class="display-3 text-white mb-md-4">COMMITTED TO EXCELLENCE</h1>
+                                <h3 class="text-white text-uppercase mb-md-3">R .PRAMA WIJAWA & PARTNERS</h3>
+                                <h2 class="display-3 text-white mb-md-4">COMMITTED TO EXCELLENCE</h2>
                             </div>
                         </div>
                     </div>
@@ -42,7 +42,19 @@
                         </p>
                     </div>
                 </div>
-                
+                <h4 class="mb-4">Our Happy Client's</h4>
+                    <div class="owl-carousel testimonial-carousel">
+                        @foreach ($clients as $client)    
+                        <div class="testimonial-item">
+                            <div class="d-flex align-items-center mr-4">
+                                <img class="img-fluid w-100" src="{{ asset('img/'. $client->logo) }}" style="width: 80px; height: 80px;" alt="Image">
+                                {{-- <div class="pl-4">
+                                    <i class="text-muted">Profession</i>
+                                </div> --}}
+                            </div>
+                        </div>
+                        @endforeach
+                    </div> 
             </div>
         </div>
     </section>

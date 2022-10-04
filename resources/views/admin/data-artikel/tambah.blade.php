@@ -49,16 +49,19 @@
                             <label for="" class="form-label">Thumbnail</label>
                             <input type="file" name="foto" id="foto" class="form-control" required>
                         </div>
-                        <div class="col-12 mb-3">
+                        <div class="col-8 mb-3">
                             <label for="" class="form-label">Rangkuman</label>
                             <textarea id="deskripsi" cols="30" rows="10" maxlength="140" name="summary" class="form-control" required></textarea>
                             <p class="text-muted">Maksimal 140 Karakter</p>
+                        </div>
+                        <div class="col-4 mb-3">
+                            <label for="" class="form-label">Penulis</label>
+                            <input type="text" name="penulis" id="penulis" class="form-control" required>
                         </div>
                         <div class="col-12 mb-3">
                             <textarea name="isi" id="editor" required></textarea>
                         </div>
                         <div class="col-12 ">
-
                             <button type="submit" class="btn btn-primary float-right" id="btn-save">Simpan</button>
                         </div>
                     </div>
@@ -78,7 +81,7 @@
                                 <div class="col-6 mb-3">
                                     <label for="" class="form-label">Penulis</label>
                                     <input type="text" name="author" id="author" class="form-control"
-                                        value="{{ $detail->author->name }}" readonly>
+                                        value="{{ $detail->penulis }}" readonly>
                                 </div>
                                 <div class="col-6 mb-3">
                                     <label for="" class="form-label">tanggal</label>

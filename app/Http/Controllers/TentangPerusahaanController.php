@@ -16,7 +16,7 @@ class TentangPerusahaanController extends Controller
             'title' => 'Data Tentang Perusahaan',
             'menu' => 'data-tentang-perusahaan'
         );
-        $data['data_tp'] = TentangPerusahaan::all();
+        $data['data_tp'] = TentangPerusahaan::with('contact_perusahaan')->get();
         // dd($data);
         return view('admin.data-tentang-perusahaan.index', $data);
     }
@@ -47,10 +47,21 @@ class TentangPerusahaanController extends Controller
                 'tentang_perusahaan' => $request->tentang_perusahaan,
                 'email_perusahaan' => $request->email_perusahaan,
                 'no_telp_perusahaan' => $request->no_telp_perusahaan,
-                'alamat_perusahaan' => $request->email_perusahaan,
+                'no_telp2_perusahaan' => $request->no_telp2_perusahaan,
+                'alamat_perusahaan' => $request->alamat_perusahaan,
+                'alamat2_perusahaan' => $request->alamat2_perusahaan,
                 'logo_perusahaan' => $custom_file_name,
             ]
         );
+        // $tp   = TentangPerusahaan::updateOrCreate(
+        //     [
+        //         'id' => $id
+        //     ],
+        //     [
+        //         'no_telp_perusahaan' => $request->no_telp_perusahaan,
+        //         'alamat_perusahaan' => $request->email_perusahaan,
+        //     ]
+        // );
         return Response::json($tp);
     }
 }

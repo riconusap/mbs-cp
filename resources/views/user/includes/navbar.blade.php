@@ -9,8 +9,8 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto py-0">
+                    <a href="{{ route('dashboard-user') }}" class="nav-item nav-link">Home</a>
                     <a href="{{route('data-attorney')}}" class="nav-item nav-link {{ $menu === "data-attorney" ? 'active' : '' }} ">Our Attorney</a>
-                    <!-- <a href="#about" class="nav-item nav-link">About</a> -->
                     <a href="{{route('data-artikel-user')}}" class="nav-item nav-link {{ $menu === "data-artikel" ? 'active' : '' }}">Articles</a>
                     <!-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"

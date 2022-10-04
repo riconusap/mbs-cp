@@ -18,6 +18,7 @@ class DashboardUserController extends Controller
         $data['expertise'] = ExpertiseContent::get(); 
         $data['pegawai'] = Pegawai::with('jabatan')->get();
         $data['artikel'] = Artikel::with('kategori')->orderBy('tanggal','DESC')->paginate(3);
+        $data['clients'] = Client::get();
         // dd(date("d",strtotime($data['artikel'][0]->tanggal)));
         return view('user.dashboard.index', $data);
     }

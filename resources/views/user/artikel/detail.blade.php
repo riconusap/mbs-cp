@@ -37,6 +37,7 @@
                                     href="{{ route('data-artikel-user-by-kategori', [$selected->kategori->kategori]) }}">{{ $selected->kategori->kategori }}</a>
                             </div>
                             <p class="text-muted ml-2">{{ DateToText::DateToText($selected->tanggal) }}</p>
+                            <p class="text-muted ml-2">Penulis : {{ $selected->penulis }}</p>
                         </div>
                     </div>
                     <h2 class="font-weight-bold">{{ $selected->judul }}</h2>

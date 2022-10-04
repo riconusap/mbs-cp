@@ -37,12 +37,14 @@
                                                         data-id="{{ $data->id }}" data-jabatan="{{ $data->jabatan }}">
                                                         <i class="fas fa-edit" style="width: 100%"></i>
                                                     </button>
+                                                    @if ($data->id != 1)     
                                                     <button type="button"
                                                     data-id="{{ $data->id }}"
                                                         class="btn btn-icon rounded-circle btn-outline-danger delete"
                                                         data-toggle="tooltip" data-placement="top" title="Hapus">
                                                         <i class="fas fa-trash" style="width: 100%"></i>
                                                     </button>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach

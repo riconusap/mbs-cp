@@ -22,20 +22,25 @@
                             @foreach ($data_tp as $data)
                                 <div class="col-md-9">
                                     <label for="">Nama Perusahaan</label>
-                                    <input type="hidden" name="post_id" value="{{$data->id}}" id="post_id">
+                                    <input type="hidden" name="post_id" value="{{ $data->id }}" id="post_id">
                                     <input type="text" value="{{ $data->nama_perusahaan }}" name="nama_perusahaan"
                                         class="form-control">
                                 </div>
                                 <div class="col-md-3">
                                     <label for="">Inisial Perusahaan</label>
-                                    <input type="text" value="{{ $data->inisial_perusahaan }}"
-                                        name="inisial_perusahaan" class="form-control">
+                                    <input type="text" value="{{ $data->inisial_perusahaan }}" name="inisial_perusahaan"
+                                        class="form-control">
 
                                 </div>
                                 <div class="col-md-6">
                                     <label for="">Nomor Telepon Perusahaan</label>
                                     <input type="number" maxlength="13" value="{{ $data->no_telp_perusahaan }}" class="form-control"
                                         name="no_telp_perusahaan">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Nomor Telepon Perusahaan ( Lainnya )</label>
+                                    <input type="number" maxlength="13" value="{{ $data->no_telp2_perusahaan }}" class="form-control"
+                                        name="no_telp2_perusahaan">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="">Email Perusahaan</label>
@@ -46,6 +51,11 @@
                                 <div class="col-md-6">
                                     <label for="">Alamat Perusahaan</label>
                                     <input type="text" value="{{ $data->alamat_perusahaan }}" name="alamat_perusahaan"
+                                        class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Alamat Perusahaan ( Lainnya )</label>
+                                    <input type="text" value="{{ $data->alamat2_perusahaan }}" name="alamat2_perusahaan"
                                         class="form-control">
                                 </div>
                                 <div class="col-md-6">
@@ -87,6 +97,11 @@
                                         readonly>
                                 </div>
                                 <div class="col-md-6">
+                                    <label for="">Nomor Telepon Perusahaan ( Lainnya )</label>
+                                    <input type="text" value="{{ $data->no_telp2_perusahaan }}" class="form-control"
+                                        readonly>
+                                </div>
+                                <div class="col-md-6">
                                     <label for="">Email Perusahaan</label>
                                     <input type="text" value="{{ $data->email_perusahaan }}" class="form-control"
                                         readonly>
@@ -94,6 +109,11 @@
                                 <div class="col-md-6">
                                     <label for="">Alamat Perusahaan</label>
                                     <input type="text" value="{{ $data->alamat_perusahaan }}" class="form-control"
+                                        readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Alamat Perusahaan ( Lainnya )</label>
+                                    <input type="text" value="{{ $data->alamat2_perusahaan }}" class="form-control"
                                         readonly>
                                 </div>
                                 <div class="col-md-6">

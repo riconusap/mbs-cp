@@ -37,7 +37,7 @@
                                                 <td>{{ $data->summary }}</td>
                                                 <td>{{ DateToText::DateToText($data->tanggal) }}</td>
                                                 <td>{{ $data->kategori->kategori }}</td>
-                                                <td>{{ $data->author->name }}</td>
+                                                <td>{{ $data->penulis }}</td>
                                                 <td>
                                                     <a type="button"
                                                     href="{{ route('data-artikel-detail',[$data->id]) }}"

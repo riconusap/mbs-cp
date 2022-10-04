@@ -24,26 +24,44 @@
             <div class="row">
                 <div class="col-md-5">
                     <div class="d-flex align-items-center border mb-3 p-4">
-                        <i class="fa fa-2x fa-map-marker-alt text-primary mr-3"></i>
-                        <div class="d-flex flex-column">
-                            <h5 class="font-weight-bold">Our Office</h5>
-                            <p class="m-0">123 Street, New York, USA</p>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center border mb-3 p-4">
                         <i class="fa fa-2x fa-envelope-open text-primary mr-3"></i>
                         <div class="d-flex flex-column">
                             <h5 class="font-weight-bold">Email Us</h5>
-                            <p class="m-0">info@example.com</p>
+                            <p class="m-0">{{$tp->email}}</p>
                         </div>
                     </div>
+                    <div class="d-flex align-items-center border mb-3 p-4">
+                        <i class="fa fa-2x fa-map-marker-alt text-primary mr-3"></i>
+                        <div class="d-flex flex-column">
+                            <h5 class="font-weight-bold">Office</h5>
+                            <p class="m-0">{{$tp->alamat_perusahaan}}</p>
+                        </div>
+                    </div>
+                    @if ($tp->alamat2_perusahaan !== "" || $tp->alamat2_perusahaan != null)    
+                        <div class="d-flex align-items-center border mb-3 p-4">
+                            <i class="fa fa-2x fa-map-marker-alt text-primary mr-3"></i>
+                            <div class="d-flex flex-column">
+                                <h5 class="font-weight-bold">Office</h5>
+                                <p class="m-0">{{$tp->alamat2_perusahaan}} </p>
+                            </div>
+                        </div>
+                    @endif
                     <div class="d-flex align-items-center border mb-3 mb-md-0 p-4">
                         <i class="fas fa-2x fa-phone-alt text-primary mr-3"></i>
                         <div class="d-flex flex-column">
-                            <h5 class="font-weight-bold">Call Us</h5>
-                            <p class="m-0">+012 345 6789</p>
+                            <h5 class="font-weight-bold">No. Telpon</h5>
+                            <p class="m-0">{{$tp->no_telp_perusahaan}}</p>
                         </div>
                     </div>
+                    @if ($tp->no_telp2_perusahaan !== "" || $tp->no_telp2_perusahaan != null)    
+                        <div class="d-flex align-items-center border mb-3 mb-md-0 p-4">
+                            <i class="fas fa-2x fa-phone-alt text-primary mr-3"></i>
+                            <div class="d-flex flex-column">
+                                <h5 class="font-weight-bold">No. Telpon ( Lainnya )</h5>
+                                <p class="m-0">{{$tp->no_telp2_perusahaan}}</p>
+                            </div>
+                        </div>
+                    @endif
                 </div>
                 <div class="col-md-7">
                     <div class="contact-form">

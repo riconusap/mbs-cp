@@ -21,7 +21,7 @@ class ArtikelController extends Controller
             'title' => 'Artikel',
             'menu' => 'data-artikel'
         );
-        $data['artikel'] = Artikel::with('author','kategori')->get();
+        $data['artikel'] = Artikel::with('kategori')->get();
         // dd($data['artikel']);
         return view('admin.data-artikel.index', $data);
     }
@@ -34,7 +34,7 @@ class ArtikelController extends Controller
         );
         if ($id != null) {
             $data['kategori_halaman'] = 'detail';
-            $data['detail'] = Artikel::with('kategori','author','komentar','komentar.komentarChild')->where('id', $id)->first();
+            $data['detail'] = Artikel::with('kategori','komentar','komentar.komentarChild')->where('id', $id)->first();
             // dd($data['detail']);
         } else {
             $data['kategori_halaman'] = 'tambah';
@@ -88,7 +88,7 @@ class ArtikelController extends Controller
                 'slug' => $slug,
                 'isi' => $request->isi,
                 'summary' => $request->summary,
-                'penulis' => Auth::id(),
+                'penulis' => $request->penulis,
                 'tanggal' => Date(now()),
                 'img' => $custom_file_name,
                 'master_kategori_id' => $request->kategori,
