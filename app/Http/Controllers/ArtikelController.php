@@ -48,7 +48,7 @@ class ArtikelController extends Controller
     {
         // dd($request->all());
 
-        $id = $request->post_id;
+        $id = $request->post_id === '' ? null : $request->post_id;
         $slug = preg_replace('/[^a-zA-Z0-9_ -]/s',' ',$request->judul);
         $slug = str_replace(' ','-',(strtolower($slug)));
 

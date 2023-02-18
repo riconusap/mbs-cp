@@ -153,7 +153,7 @@
                                 </div>
                             @endforeach
                         </div>
-                        <div class="col-12 ">
+                        <div class="col-12">
                             <button class="d-none btn btn-outline-primary float-right cancel-edit"
                                 id="btn-save">Cancel</button>
                             <button type="submit" class="d-none btn btn-primary float-right save-edit"

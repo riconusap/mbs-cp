@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','DashboardUserController@index' )->name('dashboard-user');
 Route::get('/attorney/detail/{id}','DetailPegawaiController@detail' )->name('data-detail-attorney');
 Route::get('/attorney','DetailPegawaiController@index' )->name('data-attorney');
+Route::get('/sendEmail','ContactUs@mail' )->name('sendEmail');
 
 Route::get('/contactUs', function () {
     $data = array(

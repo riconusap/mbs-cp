@@ -1,0 +1,6 @@
+slider/:id
+	Method : Delete, Put, Get
+slider
+	Method : Get
+slider/add
+	Method : Post

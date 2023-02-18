@@ -43,7 +43,7 @@
                                                     href="{{ route('data-artikel-detail',[$data->id]) }}"
                                                         class="btn btn-icon rounded-circle btn-outline-primary editButton"
                                                         data-toggle="tooltip" data-placement="top" title="Edit">
-                                                        <i class="fas fa-eye" style="width: 100%"></i>
+                                                        <i class="fas fa-edit" style="width: 100%"></i>
                                                     </a>
                                                     <button type="button"
                                                     data-id="{{ $data->id }}"
@@ -92,7 +92,7 @@
                     if (result.value) {
                         $.ajax({
                             type: "DELETE",
-                            url: "{{ url('/admin/data-artikel/delete-artikel') }}" + '/' + post_id,
+                            url: "{{ url('/berita-tambah/delete') }}" + '/' + post_id,
                             success: function(data) {
                                 Swal.fire({
                                     icon: 'success',
